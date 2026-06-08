@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoy Semillas, Mañana Flores</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,400;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    :root {
+      --negro: #0D0B09;
+      --rojo: #C13120;
+      --amarillo: #E8B820;
+      --verde: #2E6B3E;
+      --ocre: #B5620A;
+      --crema: #F0E8D8;
+      --blanco: #FAF6EE;
+      --gris: #8A8070;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--negro);
+      color: var(--crema);
+      font-family: 'Archivo', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--negro);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      padding: 8vw 4vw 6vw 6vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 2;
+      border-right: 4px solid var(--rojo);
+    }
+
+    .hero-tagline {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amarillo);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 0.9;
+      color: var(--blanco);
+      text-transform: uppercase;
+    }
+
+    .hero-h1 .linea-roja {
+      display: block;
+      color: var(--rojo);
+      font-style: italic;
+    }
+
+    .hero-h1 .linea-amarilla {
+      display: block;
+      color: var(--amarillo);
+    }
+
+    .hero-sub {
+      margin-top: 2.5rem;
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(240, 232, 216, 0.65);
+      max-width: 400px;
+      border-left: 3px solid var(--verde);
+      padding-left: 1.2rem;
+    }
+
+    .hero-right {
+      background: var(--rojo);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6vw 4vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg,
+          rgba(0, 0, 0, 0.06) 0px, rgba(0, 0, 0, 0.06) 1px,
+          transparent 1px, transparent 12px);
+    }
+
+    .hero-cifra-bloque {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(5rem, 14vw, 11rem);
+      line-height: 0.85;
+      color: var(--negro);
+      display: block;
+    }
+
+    .hero-num-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(240, 232, 216, 0.8);
+      margin-top: 1rem;
+      display: block;
+    }
+
+    .hero-años {
+      margin-top: 3rem;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.6rem);
+      color: var(--crema);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── FRANJA UPC ── */
+    .franja-upc {
+      background: var(--amarillo);
+      padding: 1.2rem 0;
+      overflow: hidden;
+      display: flex;
+      white-space: nowrap;
+      position: relative;
+      border-top: 4px solid var(--negro);
+      border-bottom: 4px solid var(--negro);
+    }
+
+    .franja-track {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding-right: 2rem;
+      animation: marquee 20s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .franja-upc p {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1rem;
+      color: var(--negro);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .franja-separator {
+      color: var(--rojo);
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    /* ── MURAL SECTION ── */
+    .mural-section {
+      background: var(--negro);
+      padding: 8vw 6vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6vw;
+      align-items: start;
+    }
+
+    .mural-title-bloque {}
+
+    .mural-num-grande {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(5rem, 12vw, 9rem);
+      line-height: 0.85;
+      color: var(--verde);
+      opacity: 0.25;
+      position: relative;
+      left: -0.05em;
+    }
+
+    .mural-titulo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      color: var(--blanco);
+      margin-top: -1rem;
+    }
+
+    .mural-titulo span {
+      color: var(--verde)
+    }
+
+    .mural-cuerpo {
+      margin-top: 2rem;
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(240, 232, 216, 0.7);
+    }
+
+    .mural-cuerpo p+p {
+      margin-top: 1.2em
+    }
+
+    .mural-cita {
+      margin-top: 2.5rem;
+      background: var(--rojo);
+      padding: 1.8rem 2rem;
+      position: relative;
+    }
+
+    .mural-cita::before {
+      content: '"';
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 5rem;
+      color: rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: -0.5rem;
+      left: 0.8rem;
+      line-height: 1;
+    }
+
+    .mural-cita p {
+      font-family: 'Archivo', sans-serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--blanco);
+      position: relative;
+      z-index: 1;
+    }
+
+    .mural-visual {
+      position: relative;
+    }
+
+    .mural-placeholder {
+      background: var(--verde);
+      aspect-ratio: 3/4;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mural-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg,
+          rgba(0, 0, 0, 0.04) 0, rgba(0, 0, 0, 0.04) 1px,
+          transparent 1px, transparent 8px),
+        repeating-linear-gradient(90deg,
+          rgba(0, 0, 0, 0.04) 0, rgba(0, 0, 0, 0.04) 1px,
+          transparent 1px, transparent 8px);
+    }
+
+    .mural-placeholder-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(240, 232, 216, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+
+    .mural-placeholder-text {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: var(--blanco);
+      line-height: 1.15;
+      position: relative;
+      z-index: 1;
+      margin-top: 0.5rem;
+    }
+
+    .mural-sticker {
+      position: absolute;
+      top: -1.5rem;
+      right: -1.5rem;
+      background: var(--amarillo);
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(8deg);
+      z-index: 2;
+      border: 3px solid var(--negro);
+      box-shadow: 4px 4px 0px var(--negro);
+    }
+
+    .imagen-mural {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(120%);
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    .imagen-fotografia {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: contrast(110%);
+    }
+
+    .imagen-fotografia-rotada {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 56.25%;
+      height: 177.77%;
+      object-fit: cover;
+      transform: translate(-50%, -50%) rotate(90deg);
+      z-index: 0;
+      filter: contrast(110%);
+    }
+
+    .mural-sticker-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2.2rem;
+      color: var(--negro);
+      line-height: 1;
+    }
+
+    .mural-sticker-txt {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--negro);
+      text-align: center;
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    /* ── CONTEXTO ── */
+    .contexto-section {
+      background: var(--crema);
+      padding: 8vw 6vw;
+    }
+
+    .contexto-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+      border-bottom: 4px solid var(--negro);
+      padding-bottom: 1.2rem;
+    }
+
+    .contexto-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--ocre);
+    }
+
+    .contexto-h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+      text-transform: uppercase;
+      color: var(--negro);
+    }
+
+    .contexto-bloques {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 4px solid var(--negro);
+    }
+
+    .ctx-bloque {
+      padding: 2.5rem 2rem;
+      border-right: 4px solid var(--negro);
+      position: relative;
+    }
+
+    .ctx-bloque:last-child {
+      border-right: none
+    }
+
+    .ctx-bloque.rojo {
+      background: var(--rojo)
+    }
+
+    .ctx-bloque.negro {
+      background: var(--negro)
+    }
+
+    .ctx-bloque.verde {
+      background: var(--verde)
+    }
+
+    .ctx-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 0.9;
+      margin-bottom: 0.8rem;
+    }
+
+    .ctx-bloque.rojo .ctx-num {
+      color: var(--crema)
+    }
+
+    .ctx-bloque.negro .ctx-num {
+      color: var(--amarillo)
+    }
+
+    .ctx-bloque.verde .ctx-num {
+      color: var(--amarillo)
+    }
+
+    .ctx-etiqueta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.63rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .ctx-bloque.rojo .ctx-etiqueta {
+      color: rgba(240, 232, 216, 0.6)
+    }
+
+    .ctx-bloque.negro .ctx-etiqueta {
+      color: rgba(240, 232, 216, 0.45)
+    }
+
+    .ctx-bloque.verde .ctx-etiqueta {
+      color: rgba(240, 232, 216, 0.55)
+    }
+
+    .ctx-desc {
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    .ctx-bloque.rojo .ctx-desc {
+      color: rgba(240, 232, 216, 0.85)
+    }
+
+    .ctx-bloque.negro .ctx-desc {
+      color: rgba(240, 232, 216, 0.7)
+    }
+
+    .ctx-bloque.verde .ctx-desc {
+      color: rgba(240, 232, 216, 0.75)
+    }
+
+    .contexto-texto {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .ctx-p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--negro);
+    }
+
+    .ctx-p+.ctx-p {
+      margin-top: 1.2em
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-section {
+      background: var(--negro);
+      padding: 8vw 6vw;
+    }
+
+    .tl-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 5rem;
+    }
+
+    .tl-num-deco {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(4rem, 10vw, 8rem);
+      line-height: 0.85;
+      color: var(--rojo);
+      opacity: 0.5;
+    }
+
+    .tl-titulo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      text-transform: uppercase;
+      color: var(--blanco);
+      line-height: 1.15;
+    }
+
+    .tl-leyenda {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .tl-leyenda-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gris);
+    }
+
+    .leyenda-cuadro {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .lc-p {
+      background: var(--rojo)
+    }
+
+    .lc-e {
+      background: var(--verde)
+    }
+
+    .lc-g {
+      background: var(--amarillo)
+    }
+
+    .tl-lista {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 100px 4px 1fr;
+      gap: 0 2rem;
+      position: relative;
+      min-height: 120px;
+    }
+
+    .tl-fecha {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gris);
+      padding-top: 4px;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .tl-linea {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tl-punto {
+      width: 14px;
+      height: 14px;
+      border-radius: 0;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .tp-p {
+      background: var(--rojo)
+    }
+
+    .tp-e {
+      background: var(--verde)
+    }
+
+    .tp-g {
+      background: var(--amarillo)
+    }
+
+    .tl-trazo {
+      width: 0;
+      border-left: 2px dashed rgba(240, 232, 216, 0.2);
+      flex: 1;
+      background: transparent;
+      margin-top: 4px;
+    }
+
+    .tl-contenido {
+      padding: 0 0 3rem 0;
+    }
+
+    .tl-nombre {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--blanco);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .tl-rol {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 3px 8px;
+      margin-bottom: 0.8rem;
+    }
+
+    .rol-p {
+      background: var(--rojo);
+      color: var(--crema)
+    }
+
+    .rol-e {
+      background: var(--verde);
+      color: var(--crema)
+    }
+
+    .rol-g {
+      background: var(--amarillo);
+      color: var(--negro)
+    }
+
+    .tl-bio {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(240, 232, 216, 0.55);
+    }
+
+    /* ── SIGNIFICADO ── */
+    .significado-section {
+      background: var(--amarillo);
+      padding: 8vw 6vw;
+    }
+
+    .sig-header {
+      margin-bottom: 5rem;
+    }
+
+    .sig-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--negro);
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+
+    .sig-titulo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      color: var(--negro);
+      line-height: 0.95;
+    }
+
+    .sig-bloques {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--negro);
+    }
+
+    .sig-card {
+      background: var(--amarillo);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 3px solid transparent;
+    }
+
+    .sig-card:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 6px 6px 0px var(--verde);
+      border-color: var(--negro);
+      z-index: 10;
+    }
+
+    .sig-card:nth-child(2) {
+      background: #D4A510
+    }
+
+    .sig-card:nth-child(3) {
+      background: #D4A510
+    }
+
+    .sig-card:nth-child(4) {
+      background: var(--amarillo)
+    }
+
+    .sig-roman {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 4rem;
+      line-height: 0.85;
+      color: rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+    }
+
+    .sig-card-titulo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      color: var(--negro);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .sig-card-texto {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    /* ── REPARACIÓN ── */
+    .reparacion-section {
+      background: var(--negro);
+      border-top: 5px solid var(--verde);
+      padding: 6vw 6vw;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 6vw;
+      align-items: center;
+    }
+
+    .rep-label-grande {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--verde);
+    }
+
+    .rep-texto {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: rgba(240, 232, 216, 0.65);
+    }
+
+    .rep-resolucion {
+      display: inline-block;
+      background: var(--verde);
+      color: var(--blanco);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      margin-bottom: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--rojo);
+      padding: 4vw 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-titulo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: var(--negro);
+      line-height: 1;
+    }
+
+    .footer-titulo span {
+      display: block;
+      font-family: 'Archivo', sans-serif;
+      font-style: italic;
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(240, 232, 216, 0.7);
+      margin-top: 4px;
+    }
+
+    .footer-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.45);
+      line-height: 2;
+      text-align: right;
+    }
+
+    @media(max-width:780px) {
+      .hero {
+        grid-template-columns: 1fr
+      }
+
+      .hero-right {
+        min-height: 280px;
+        border-top: 4px solid var(--negro)
+      }
+
+      .hero-left {
+        border-right: none;
+        padding: 12vw 6vw 8vw
+      }
+
+      .mural-section {
+        grid-template-columns: 1fr;
+        gap: 3rem
+      }
+
+      .mural-sticker {
+        transform: scale(0.85) rotate(8deg);
+        right: -0.5rem
+      }
+
+      .contexto-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem
+      }
+
+      .contexto-bloques {
+        grid-template-columns: 1fr
+      }
+
+      .ctx-bloque {
+        border-right: none;
+        border-bottom: 4px solid var(--negro)
+      }
+
+      .ctx-bloque:last-child {
+        border-bottom: none
+      }
+
+      .contexto-texto {
+        grid-template-columns: 1fr
+      }
+
+      .tl-item {
+        grid-template-columns: 75px 4px 1fr;
+        gap: 0 1rem
+      }
+
+      .sig-bloques {
+        grid-template-columns: 1fr
+      }
+
+      .reparacion-section {
+        grid-template-columns: 1fr;
+        gap: 3rem
+      }
+
+      footer {
+        flex-direction: column
+      }
+
+      .footer-meta {
+        text-align: left
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-tagline">Universidad Popular del Cesar · Valledupar</p>
+      <h1 class="hero-h1">
+        <span>Hoy</span>
+        <span class="linea-roja">Semillas,</span>
+        <span class="linea-amarilla">Mañana</span>
+        <span>Flores</span>
+      </h1>
+      <p class="hero-sub">
+        Un mural pintado sobre los muros de la UPC honra a nueve integrantes
+        de su comunidad académica asesinados por grupos paramilitares entre
+        1987 y 2004. Sus nombres no son estadísticas. Son semillas.
+      </p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-cifra-bloque">
+        <span class="hero-num">9</span>
+        <span class="hero-num-label">Vidas arrebatadas</span>
+      </div>
+      <p class="hero-años">1987 — 2004</p>
+    </div>
+  </section>
+
+  <!-- FRANJA -->
+  <div class="franja-upc">
+    <div class="franja-track">
+      <p>4 Profesores</p>
+      <span class="franja-separator">✦</span>
+      <p>3 Estudiantes</p>
+      <span class="franja-separator">✦</span>
+      <p>2 Egresados</p>
+      <span class="franja-separator">✦</span>
+      <p>17 años de persecución sistemática</p>
+      <span class="franja-separator">✦</span>
+      <p>1 comunidad académica víctima del conflicto</p>
+      <span class="franja-separator">✦</span>
+    </div>
+    <div class="franja-track" aria-hidden="true">
+      <p>4 Profesores</p>
+      <span class="franja-separator">✦</span>
+      <p>3 Estudiantes</p>
+      <span class="franja-separator">✦</span>
+      <p>2 Egresados</p>
+      <span class="franja-separator">✦</span>
+      <p>17 años de persecución sistemática</p>
+      <span class="franja-separator">✦</span>
+      <p>1 comunidad académica víctima del conflicto</p>
+      <span class="franja-separator">✦</span>
+    </div>
+  </div>
+
+  <!-- EL MURAL -->
+  <section class="mural-section">
+    <div class="mural-title-bloque">
+      <div class="mural-num-grande">01</div>
+      <h2 class="mural-titulo">El mural <span>sobre el ladrillo</span></h2>
+      <div class="mural-cuerpo">
+        <p>
+          Sobre una pared de ladrillo expuesto en el campus de la UPC en Valledupar,
+          nueve retratos de tamaño monumental emergen entre hojas tropicales y flores
+          del Caribe. Fondo amarillo solar. Letras verdes y azules que proclaman el
+          título. Cada cara pintada con el mismo tamaño, la misma dignidad.
+        </p>
+        <p>
+          Debajo de cada rostro, apenas un nombre y una fecha. Un gesto mínimo que
+          cumple una función enorme: arrebatarle las cifras abstractas al conflicto
+          armado y devolver la humanidad a cada vida interrumpida.
+        </p>
+        <p>
+          El mural fue creado como parte del proceso de reparación colectiva
+          reconocido por el Estado colombiano en 2017, cuando la UARIV incluyó
+          a la comunidad académica de la UPC en el Registro Único de Víctimas.
+        </p>
+      </div>
+      <div class="mural-cita">
+        <p>Matándolas quisieron silenciarlas y hundirlas en la bruma del olvido.
+          No lo consiguieron. Al disiparse la bruma, el olvido irrumpió cargado
+          de memoria.</p>
+      </div>
+    </div>
+    <div class="mural-visual">
+      <div class="mural-sticker">
+        <span class="mural-sticker-num">UPC</span>
+        <span class="mural-sticker-txt">Sujeto de<br>reparación<br>colectiva</span>
+      </div>
+      <div class="mural-placeholder">
+        <img src="https://i.pinimg.com/736x/d6/a3/0c/d6a30cc3e42e7b3c21de6791dc04a51a.jpg" alt="Detalle del mural UPC"
+          class="imagen-mural">
+        <p class="mural-placeholder-label">Mural · Campus UPC · Valledupar</p>
+        <p class="mural-placeholder-text">Hoy Semillas,<br>Mañana Flores</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXTO -->
+  <section class="contexto-section">
+    <div class="contexto-header">
+      <span class="contexto-label">Contexto histórico</span>
+      <h2 class="contexto-h2">El "baile rojo" de las universidades públicas</h2>
+    </div>
+
+    <div class="contexto-bloques">
+      <div class="ctx-bloque rojo">
+        <p class="ctx-num">17</p>
+        <p class="ctx-etiqueta">Años de violencia</p>
+        <p class="ctx-desc">Entre 1987 y 2004, la UPC sufrió una campaña sostenida de terror. No fueron hechos aislados
+          ni "balas perdidas". Fue un patrón sistemático para silenciar la academia.</p>
+      </div>
+      <div class="ctx-bloque negro">
+        <p class="ctx-num">3</p>
+        <p class="ctx-etiqueta">Semanas de 1997</p>
+        <p class="ctx-desc">En menos de un mes —enero y febrero de 1997— la universidad perdió tres estudiantes: José
+          Alfredo Cuello, Elizabeth Córdoba y Rosilda Arias.</p>
+      </div>
+      <div class="ctx-bloque verde">
+        <p class="ctx-num">2017</p>
+        <p class="ctx-etiqueta">Reconocimiento del Estado</p>
+        <p class="ctx-desc">La Resolución 2017-83369 de la UARIV reconoció a la comunidad académica de la UPC como
+          Sujeto de Reparación Colectiva, incluyéndola en el Registro Único de Víctimas.</p>
+      </div>
+    </div>
+
+    <div class="contexto-texto">
+      <div>
+        <p class="ctx-p">
+          Los grupos paramilitares ejecutaron una estrategia deliberada para silenciar
+          las voces críticas dentro de las universidades públicas colombianas. En la UPC
+          de Valledupar esta persecución fue especialmente brutal y sostenida.
+        </p>
+        <p class="ctx-p">
+          El patrón era siempre el mismo: líderes estudiantiles, profesores sindicalizados,
+          egresados defensores de derechos humanos. Quienes pensaban distinto. Quienes
+          organizaban. Quienes soñaban con una universidad y un país diferentes.
+        </p>
+      </div>
+      <div>
+        <p class="ctx-p">
+          La violencia no discriminó dentro del campus: golpeó a profesores que guían
+          e investigan, estudiantes que son el futuro transformador, y egresados que
+          llevan el saber universitario al tejido social. El objetivo era destruir la
+          estructura completa del conocimiento crítico.
+        </p>
+        <p class="ctx-p">
+          Ese es el contexto que el mural hace visible a cada estudiante que cruza el
+          campus hoy. Esos nombres pintados sobre el ladrillo son también una advertencia
+          y una promesa: la memoria no se rinde.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="tl-header">
+      <div class="tl-num-deco">9</div>
+      <div>
+        <h2 class="tl-titulo">Los nueve nombres.<br>Las nueve semillas.</h2>
+      </div>
+    </div>
+
+    <div class="tl-leyenda">
+      <div class="tl-leyenda-item">
+        <div class="leyenda-cuadro lc-p"></div>Profesor
+      </div>
+      <div class="tl-leyenda-item">
+        <div class="leyenda-cuadro lc-e"></div>Estudiante
+      </div>
+      <div class="tl-leyenda-item">
+        <div class="leyenda-cuadro lc-g"></div>Egresado
+      </div>
+    </div>
+
+    <div class="tl-lista">
+
+      <div class="tl-item">
+        <div class="tl-fecha">29 jun<br>1987</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-p"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">José Francisco Ramírez Torres</p>
+          <span class="tl-rol rol-p">Profesor</span>
+          <p class="tl-bio">Abogado, 33 años. Profesor de la UPC, directivo de ANDAL, vocero de la Coordinadora
+            Obrero-Campesina y miembro de A Luchar. Fue asesinado por dos hombres en moto mientras cambiaba una llanta
+            cerca de su casa en el barrio Garupal.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">14 jul<br>1989</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-g"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">Miguel Vicente Arroyo Arias</p>
+          <span class="tl-rol rol-g">Egresado</span>
+          <p class="tl-bio">Contador público. Líder histórico del movimiento estudiantil y promotor de la creación de la
+            UPC. Miembro de la Unión Patriótica. Asesinado frente a su droguería en Cinco Esquinas. El auditorio central
+            de la sede Hurtado lleva su nombre.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">13 mar<br>1991</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-p"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">José David López Teherán</p>
+          <span class="tl-rol rol-p">Profesor</span>
+          <p class="tl-bio">Médico, natural de Zambrano. Profesor de Enfermería, cofundador de la seccional Cesar de
+            ASMEDAS. Militante de la AD M-19, había sido candidato al concejo de Valledupar. Asesinado a la entrada del
+            edificio Brasilia mientras sesionaba la Asamblea Nacional Constituyente.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">23 ene<br>1997</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-e"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">José Alfredo Cuello Saucedo</p>
+          <span class="tl-rol rol-e">Estudiante</span>
+          <p class="tl-bio">26 años. Licenciatura en Matemáticas y Física. Representante estudiantil ante el Consejo
+            Superior. Cuatro hombres lo sacaron a la fuerza de su casa en el barrio Garupal. Su cuerpo con siete
+            impactos de bala y señales de tortura fue encontrado al día siguiente en el puente Salguero sobre el río
+            Cesar.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">13 feb<br>1997</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-e"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">Elizabeth Córdoba Uliana</p>
+          <span class="tl-rol rol-e">Estudiante</span>
+          <p class="tl-bio">23 años. Contaduría Pública. Líder del Consejo Estudiantil Universitario. Militante del
+            MOIR. Fue sacada de su residencia en el barrio Los Caciques por hombres en un vehículo sin placas. Su cuerpo
+            fue hallado incinerado al día siguiente en la vía hacia la comunidad Kankuama de Río Seco.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">14 feb<br>1997</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-e"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">Rosilda Arias Velásquez</p>
+          <span class="tl-rol rol-e">Estudiante</span>
+          <p class="tl-bio">20 años. Contaduría Pública. Desarrollaba trabajo de Educación Popular con comunidades del
+            río Guatapurí. Desapareció cuando viajaba hacia Agustín Codazzi. Su cuerpo fue hallado al día siguiente en
+            el corregimiento de Maríangola.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">16 may<br>2001</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-p"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">Miguel Ángel Vargas Zapata</p>
+          <span class="tl-rol rol-p">Profesor</span>
+          <p class="tl-bio">46 años. El único docente con PhD en la UPC. Presidente seccional de ASPU. Voz crítica
+            frente a la administración universitaria. Asesinado al salir del campus a las 6:30 p.m. en su Fiat rojo.
+            Falleció horas después en el Hospital Rosario Pumarejo.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">22 oct<br>2001</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-p"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">Luis José Mendoza Manjarrés</p>
+          <span class="tl-rol rol-p">Profesor</span>
+          <p class="tl-bio">43 años. Administración de Empresas. Directivo de ASPU y militante de la Unión Patriótica.
+            Cuatro hombres armados en dos motos de alto cilindraje lo asesinaron a quemarropa a las 8 p.m. dentro de su
+            automóvil, al salir del campus.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-fecha">3 ago<br>2004</div>
+        <div class="tl-linea">
+          <div class="tl-punto tp-g"></div>
+          <div class="tl-trazo"></div>
+        </div>
+        <div class="tl-contenido">
+          <p class="tl-nombre">Freddy Antonio Arias Arias</p>
+          <span class="tl-rol rol-g">Egresado</span>
+          <p class="tl-bio">33 años. Administración de Empresas. Defensor de derechos humanos y líder del pueblo
+            Kankuamo. Articulaba la investigación universitaria con comunidades indígenas de la Sierra Nevada. Fue
+            baleado en bicicleta por dos paramilitares en la carrera 19 con calle 6 de Valledupar.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SIGNIFICADO -->
+  <section class="significado-section">
+    <div class="sig-header">
+      <p class="sig-label">Por qué importa</p>
+      <h2 class="sig-titulo">El significado<br>del mural</h2>
+    </div>
+
+    <div class="sig-bloques">
+      <div class="sig-card">
+        <p class="sig-roman">I</p>
+        <h3 class="sig-card-titulo">La metáfora de la siembra</h3>
+        <p class="sig-card-texto">Llamarlos "semillas" le arrebata a la muerte su carácter definitivo. Si un rostro es
+          una semilla, múltiples rostros son un campo fértil. Por cada vida que intentaron apagar, la universidad sembró
+          su memoria en las paredes para que germinaran nuevas generaciones de pensadores críticos.</p>
+      </div>
+      <div class="sig-card">
+        <p class="sig-roman">II</p>
+        <h3 class="sig-card-titulo">El muro como archivo vivo</h3>
+        <p class="sig-card-texto">Incluir la fecha exacta junto al nombre cumple una función jurídica y de duelo. Obliga
+          al transeúnte a reconocer que detrás del concepto abstracto del "conflicto armado" hay vidas interrumpidas en
+          días concretos. Es arrebatarle las estadísticas al olvido institucional.</p>
+      </div>
+      <div class="sig-card">
+        <p class="sig-roman">III</p>
+        <h3 class="sig-card-titulo">La igualdad en la dignidad</h3>
+        <p class="sig-card-texto">Profesores junto a sus estudiantes, en la misma pared, con el mismo tamaño de retrato.
+          El mural iguala a todos en la dignidad del recuerdo y en la tragedia de su ausencia, subrayando que la
+          violencia golpeó toda la estructura del saber.</p>
+      </div>
+      <div class="sig-card">
+        <p class="sig-roman">IV</p>
+        <h3 class="sig-card-titulo">La sistematicidad del terror</h3>
+        <p class="sig-card-texto">Diecisiete años de fechas corridas hacen imposible hablar de hechos aislados. El mural
+          vuelve evidente ante cualquier mirada la naturaleza organizada de la campaña para silenciar la academia y el
+          pensamiento crítico en el Caribe colombiano.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPARACIÓN -->
+  <section class="reparacion-section">
+    <div>
+      <p class="rep-label-grande">Reparación<br>Colectiva</p>
+      <!-- Contenedor para la segunda foto -->
+      <div
+        style="margin-top: 2rem; position: relative; aspect-ratio: 16/9; border: 4px solid var(--amarillo); box-shadow: 6px 6px 0px var(--amarillo); overflow: hidden;">
+        <img src="https://i.pinimg.com/736x/74/7c/b8/747cb8b25053d77558c90238b1d70895.jpg"
+          alt="Vista general del mural UPC" class="imagen-fotografia-rotada">
+      </div>
+    </div>
+    <div>
+      <span class="rep-resolucion">Resolución UARIV 2017-83369 · 26 jul 2017</span>
+      <p class="rep-texto">
+        Teniendo en cuenta los graves daños causados con ocasión de lo denominado
+        como el "baile rojo de las universidades públicas", la Unidad para la
+        Atención y Reparación Integral a las Víctimas incluyó en el Registro Único
+        de Víctimas a la Comunidad Académica de la UPC y la reconoció como
+        Sujeto de Reparación Colectiva. El mural es una de las acciones simbólicas
+        de ese proceso, impulsado por el Comité de Impulso del Sujeto de Reparación
+        Colectiva de la UPC, Valledupar, 16 de noviembre de 2017.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-titulo">
+      Hoy Semillas, Mañana Flores
+      <span>Mural de la Memoria — UPC Valledupar</span>
+    </div>
+    <p class="footer-meta">
+      Universidad Popular del Cesar<br>
+      Valledupar, Cesar, Colombia<br>
+      Fuente: Semillas de la UPC · Comité de Impulso SRC · 2017
+    </p>
+  </footer>
+
+</body>
+
+</html>
